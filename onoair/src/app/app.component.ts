@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [HomeComponent],
+  template: `
+    <app-home></app-home>
+  `
 })
-export class AppComponent {
-  title = 'onoair';
-}
+export class AppComponent {}

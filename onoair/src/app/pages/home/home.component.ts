@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from '../../components/header/header.component';
-import { CommonModule } from '@angular/common'; // Import CommonModule for *ngFor
 
 @Component({
   selector: 'app-home',
-  standalone: true, // Mark as standalone
-  imports: [CommonModule, HeaderComponent], // Add CommonModule and HeaderComponent
+  standalone: true,
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatMenuModule, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-    // Add the missing property with mock data
-    lastMinuteFlights = [
-      { destination: 'Berlin', date: '25.11.2024' },
-      { destination: 'Paris', date: '29.11.2024' },
-      { destination: 'Dublin', date: '1.12.2024' }
-    ];
-}
+export class HomeComponent {}

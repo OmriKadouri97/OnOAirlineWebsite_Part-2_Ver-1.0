@@ -1,9 +1,20 @@
-
 <mat-toolbar color="primary">
-    <span class="logo">OnoAir</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/admin">Admin</button>
-    <button mat-button routerLink="/search">Search a flight</button>
-    <button mat-button routerLink="/bookings">My Bookings</button>
-  </mat-toolbar>
- 
+  <span class="logo">OnoAir</span>
+  <span class="spacer"></span>
+
+  <!-- Menu Button -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span>Admin</span>
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-menu-item>
+      <span>User</span>
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
