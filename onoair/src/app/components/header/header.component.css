@@ -1,7 +1,13 @@
-.logo {
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
   font-size: 1.5rem;
   font-weight: bold;
+  cursor: pointer;
 }
-.spacer {
-  flex: 1 1 auto;
-}
+
+

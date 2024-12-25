@@ -1,0 +1,38 @@
+<div class="last-minute-section">
+  <h1>Last minute flights</h1>
+  <div class="flights-container">
+    <mat-card *ngFor="let flight of lastMinuteFlights" class="flight-card" (click)="navigateToBooking(flight)">
+      <img mat-card-image [src]="flight.imageUrl" alt="{{ flight.destination }} image">
+      <mat-card-content>
+        <h3>{{ flight.destination }}</h3>
+        <p>{{ flight.date }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<div class="find-flight-section">
+  <h1>Find a Flight</h1>
+  <table mat-table [dataSource]="futureFlights" class="mat-elevation-z8">
+    <ng-container matColumnDef="flightNumber">
+      <th mat-header-cell *matHeaderCellDef> Flight # </th>
+      <td mat-cell *matCellDef="let flight"> {{ flight.flightNumber }} </td>
+    </ng-container>
+    <ng-container matColumnDef="origin">
+      <th mat-header-cell *matHeaderCellDef> Origin </th>
+      <td mat-cell *matCellDef="let flight"> {{ flight.origin }} </td>
+    </ng-container>
+    <ng-container matColumnDef="destination">
+      <th mat-header-cell *matHeaderCellDef> Destination </th>
+      <td mat-cell *matCellDef="let flight"> {{ flight.destination }} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let flight"> {{ flight.date }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['flightNumber', 'origin', 'destination', 'date']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['flightNumber', 'origin', 'destination', 'date']"></tr>
+  </table>
+</div>

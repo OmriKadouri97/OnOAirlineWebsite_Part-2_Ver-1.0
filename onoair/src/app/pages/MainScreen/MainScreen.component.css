@@ -1,0 +1,27 @@
+.last-minute-section {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .flights-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .flight-card {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .flight-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .find-flight-section {
+    text-align: center;
+    margin-top: 40px;
+  }
+  

@@ -1,4 +1,33 @@
-<div class="home-page">
-  <h1>Welcome to OnoAir</h1>
-  <p>Search for flights, view bookings, and manage your trips.</p>
+<div class="home-container">
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h1>Welcome to OnoAir</h1>
+    <p>Your gateway to convenient and professional flight booking.</p>
+  </div>
+
+  <!-- Admin Section -->
+  <div class="admin-section">
+    <h2>Admin Panel</h2>
+    <div class="admin-options">
+      <button mat-raised-button color="primary" (click)="navigateTo('DestinationManagement')">
+        Manage Destinations
+      </button>
+      <button mat-raised-button color="primary" (click)="navigateTo('FlightManagement')">
+        Manage Flights
+      </button>
+    </div>
+  </div>
+
+  <!-- User Section -->
+  <div class="user-section">
+    <h2>User Options</h2>
+    <div class="user-options">
+      <button mat-raised-button color="accent" (click)="navigateTo('booking')">
+        My Bookings
+      </button>
+      <button mat-raised-button color="accent" (click)="navigateTo('help')">
+        Help & Support
+      </button>
+    </div>
+  </div>
 </div>
