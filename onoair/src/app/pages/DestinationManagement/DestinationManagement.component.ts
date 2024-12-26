@@ -13,29 +13,29 @@ export class DestinationManagementComponent {
   destinations = [
     {
       name: 'Berlin',
-      airport: 'Berlin Brandenburg Airport',
+      imageUrl: 'https://via.placeholder.com/150',
+      airportName: 'Berlin Brandenburg Airport',
       airportCode: 'BER',
-      location: 'Berlin, Germany',
-      imageUrl: 'https://via.placeholder.com/150'
+      location: 'Berlin, Germany'
     },
     {
       name: 'Dublin',
-      airport: 'Dublin Airport',
+      imageUrl: 'https://via.placeholder.com/150',
+      airportName: 'Dublin Airport',
       airportCode: 'DUB',
-      location: 'Dublin, Ireland',
-      imageUrl: 'https://via.placeholder.com/150'
+      location: 'Dublin, Ireland'
     },
     {
       name: 'Paris',
-      airport: 'Charles de Gaulle Airport',
+      imageUrl: 'https://via.placeholder.com/150',
+      airportName: 'Charles de Gaulle Airport',
       airportCode: 'CDG',
-      location: 'Paris, France',
-      imageUrl: 'https://via.placeholder.com/150'
+      location: 'Paris, France'
     }
   ];
 
   viewDestination(destination: any): void {
     console.log(`Viewing details for ${destination.name}`);
-    // Add navigation logic here (e.g., route to a destination details page)
+    // Add logic to navigate to a destination details page if needed
   }
 }
