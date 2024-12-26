@@ -1,0 +1,54 @@
+<div class="MyBookings">
+    <h1>My Bookings</h1>
+    <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
+  
+      <!-- Booking Code Column -->
+      <ng-container matColumnDef="bookingCode">
+        <th mat-header-cell *matHeaderCellDef> Booking Code </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.bookingCode }} </td>
+      </ng-container>
+  
+      <!-- Flight Number Column -->
+      <ng-container matColumnDef="flightNumber">
+        <th mat-header-cell *matHeaderCellDef> Flight # </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.flightNumber }} </td>
+      </ng-container>
+  
+      <!-- Passenger Count Column -->
+      <ng-container matColumnDef="passengerCount">
+        <th mat-header-cell *matHeaderCellDef> Passengers </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.passengerCount }} </td>
+      </ng-container>
+  
+      <!-- Passenger Names Column -->
+      <ng-container matColumnDef="passengerNames">
+        <th mat-header-cell *matHeaderCellDef> Passenger Names </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.passengerNames.join(', ') }} </td>
+      </ng-container>
+  
+      <!-- Departure Column -->
+      <ng-container matColumnDef="departure">
+        <th mat-header-cell *matHeaderCellDef> Departure </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.departure }} </td>
+      </ng-container>
+  
+      <!-- Arrival Column -->
+      <ng-container matColumnDef="arrival">
+        <th mat-header-cell *matHeaderCellDef> Arrival </th>
+        <td mat-cell *matCellDef="let booking"> {{ booking.arrival }} </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let booking">
+          <button mat-raised-button color="primary" (click)="viewBooking(booking)">View</button>
+        </td>
+      </ng-container>
+  
+      <!-- Table Header and Rows -->
+      <tr mat-header-row *matHeaderRowDef="['bookingCode', 'flightNumber', 'passengerCount', 'passengerNames', 'departure', 'arrival', 'actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['bookingCode', 'flightNumber', 'passengerCount', 'passengerNames', 'departure', 'arrival', 'actions']"></tr>
+    </table>
+  </div>
+  
