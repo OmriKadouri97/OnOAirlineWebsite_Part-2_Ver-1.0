@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { DestinationService } from '../../services/destination.service';
+
 
 @Component({
   selector: 'app-destination-management',
@@ -10,32 +12,18 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./DestinationManagement.component.css']
 })
 export class DestinationManagementComponent {
-  destinations = [
-    {
-      name: 'Berlin',
-      imageUrl: 'https://via.placeholder.com/150',
-      airportName: 'Berlin Brandenburg Airport',
-      airportCode: 'BER',
-      location: 'Berlin, Germany'
-    },
-    {
-      name: 'Dublin',
-      imageUrl: 'https://via.placeholder.com/150',
-      airportName: 'Dublin Airport',
-      airportCode: 'DUB',
-      location: 'Dublin, Ireland'
-    },
-    {
-      name: 'Paris',
-      imageUrl: 'https://via.placeholder.com/150',
-      airportName: 'Charles de Gaulle Airport',
-      airportCode: 'CDG',
-      location: 'Paris, France'
-    }
-  ];
+  destinations: any[] = [];
 
-  viewDestination(destination: any): void {
-    console.log(`Viewing details for ${destination.name}`);
-    // Add logic to navigate to a destination details page if needed
+  constructor(private destinationService: DestinationService) {}
+
+  ngOnInit(): void {
+    // Fetch all destinations using the service
+    this.destinations = this.destinationService.listDestinations();
   }
+
+    // Method to handle viewing a destination
+    viewDestination(destination: any): void {
+      console.log(`Viewing details for destination: ${destination.name}`);
+      // Add navigation logic or detailed viewing logic here
+    }
 }
