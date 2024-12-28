@@ -14,14 +14,14 @@ import { BookingService } from '../../services/booking.service';
 export class MyBookingsComponent implements OnInit {
   bookings: any[] = [];
 
-  constructor(private bookingService: BookingService) {}
+  constructor(private MyBookings: BookingService) {}
 
   ngOnInit(): void {
-    this.bookings = this.bookingService.list();
+    this.bookings = this.MyBookings.list();
   }
 
   viewBooking(bookingCode: string): void {
-    const booking = this.bookingService.get(bookingCode);
+    const booking = this.MyBookings.get(bookingCode);
     console.log('Booking Details:', booking);
   }
 }
