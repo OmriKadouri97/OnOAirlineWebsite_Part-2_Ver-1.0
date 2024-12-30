@@ -2,7 +2,7 @@
 <div class="last-minute-section">
   <h1>Last minute flights</h1>
   <div class="flights-container">
-    <mat-card *ngFor="let flight of lastMinuteFlights" class="flight-card" (click)="navigateToBooking(flight)">
+    <mat-card *ngFor="let flight of lastMinuteFlights" class="flight-card" (click)="bookFlight(flight.flightNumber)">
       <img mat-card-image [src]="flight.imageUrl" alt="{{ flight.destination }} image">
       <mat-card-content>
         <h3>{{ flight.destination }}</h3>
@@ -17,7 +17,7 @@
   <h1>Find a Flight</h1>
   <table mat-table [dataSource]="futureFlights" class="mat-elevation-z8">
     <ng-container matColumnDef="flightNumber">
-      <th mat-header-cell *matHeaderCellDef> Flight # </th>
+      <th mat-header-cell *matHeaderCellDef> Flight Number </th>
       <td mat-cell *matCellDef="let flight"> {{ flight.flightNumber }} </td>
     </ng-container>
     <ng-container matColumnDef="origin">
@@ -43,7 +43,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let flight">
-        <button mat-raised-button color="primary" (click)="navigateToBooking(flight)">Book</button>
+        <button mat-raised-button color="primary" (click)="bookFlight(flight.flightNumber)">Book</button>
       </td>
     </ng-container>
 

@@ -1,54 +1,56 @@
-<div class="MyBookings">
-    <h1>My Bookings</h1>
-    <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
-  
-      <!-- Booking Code Column -->
-      <ng-container matColumnDef="bookingCode">
-        <th mat-header-cell *matHeaderCellDef> Booking Code </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.bookingCode }} </td>
-      </ng-container>
-  
-      <!-- Flight Number Column -->
-      <ng-container matColumnDef="flightNumber">
-        <th mat-header-cell *matHeaderCellDef> Flight # </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.flightNumber }} </td>
-      </ng-container>
-  
-      <!-- Passenger Count Column -->
-      <ng-container matColumnDef="numberOfPassengers">
-        <th mat-header-cell *matHeaderCellDef> Passengers </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.numberOfPassengers }} </td>
-      </ng-container>
-  
-      <!-- Passenger Names Column -->
-      <ng-container matColumnDef="passengerNames">
-        <th mat-header-cell *matHeaderCellDef> Passenger Names </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.passengerNames.join(', ') }} </td>
-      </ng-container>
-  
-      <!-- Departure Column -->
-      <ng-container matColumnDef="departure">
-        <th mat-header-cell *matHeaderCellDef> Departure </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.departure }} </td>
-      </ng-container>
-  
-      <!-- Arrival Column -->
-      <ng-container matColumnDef="arrival">
-        <th mat-header-cell *matHeaderCellDef> Arrival </th>
-        <td mat-cell *matCellDef="let booking"> {{ booking.arrival }} </td>
-      </ng-container>
-  
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let booking">
-          <button mat-raised-button color="primary" (click)="viewBooking(booking.bookingCode)">View</button>
-        </td>
-      </ng-container>
-  
-      <!-- Table Header and Rows -->
-      <tr mat-header-row *matHeaderRowDef="['bookingCode', 'flightNumber', 'numberOfPassengers', 'passengerNames', 'departure', 'arrival', 'actions']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['bookingCode', 'flightNumber', 'numberOfPassengers', 'passengerNames', 'departure', 'arrival', 'actions']"></tr>
-    </table>
+<div class="my-bookings">
+  <h1>My Bookings</h1>
+
+  <!-- Upcoming Bookings Section -->
+  <div *ngIf="upcomingBookings.length > 0; else noUpcomingBookings">
+    <h2>Upcoming Bookings</h2>
+    <div *ngFor="let booking of upcomingBookings" class="booking-card">
+      <div class="image-placeholder">Destination Image</div>
+      <div class="booking-details">
+        <p><strong>Booking Code:</strong> {{ booking.bookingCode }}</p>
+        <p><strong>Flight #:</strong> {{ booking.flightNumber }}</p>
+        <p><strong>Passengers:</strong> {{ booking.numberOfPassengers }}</p>
+        <div *ngFor="let passenger of booking.passengerNames; let i = index">
+          <p>
+            <strong>Passenger Name:</strong> {{ passenger }}<br />
+            <strong>Passport Number:</strong> {{ booking.passportNumbers[i] }}
+          </p>
+        </div>
+        <p><strong>Departure:</strong> {{ booking.departure }}</p>
+        <p><strong>Arrival:</strong> {{ booking.arrival }}</p>
+        <button mat-raised-button color="primary" [routerLink]="['/FlightDetails', booking.bookingCode]">View</button>
+
+      </div>
+    </div>
   </div>
-  
+  <ng-template #noUpcomingBookings>
+    <p class="no-bookings-message">You have no upcoming bookings at the moment.</p>
+  </ng-template>
+
+  <!-- Previous Bookings Section -->
+  <div *ngIf="previousBookings.length > 0; else noPreviousBookings">
+    <h2>Previous Bookings</h2>
+    <div *ngFor="let booking of previousBookings" class="booking-card">
+      <div class="image-placeholder">Destination Image</div>
+      <div class="booking-details">
+        <p><strong>Booking Code:</strong> {{ booking.bookingCode }}</p>
+        <p><strong>Flight #:</strong> {{ booking.flightNumber }}</p>
+        <p><strong>Passengers:</strong> {{ booking.numberOfPassengers }}</p>
+        <div *ngFor="let passenger of booking.passengerNames; let i = index">
+          <p>
+            <strong>Passenger Name:</strong> {{ passenger }} , 
+            <strong>Passport Number:</strong> {{ booking.passportNumbers[i] }}
+          </p>
+        </div>
+        <p><strong>Departure:</strong> {{ booking.departure }}</p>
+        <p><strong>Arrival:</strong> {{ booking.arrival }}</p>
+        <p><strong>Origin:</strong> {{ booking.origin }} 
+        <p><strong>Destination:</strong> {{ booking.destination }}</p>
+        <button mat-raised-button color="primary" [routerLink]="['/FlightDetails', booking.bookingCode]">View</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #noPreviousBookings>
+    <p class="no-bookings-message">You have no previous bookings at the moment.</p>
+  </ng-template>
+</div>

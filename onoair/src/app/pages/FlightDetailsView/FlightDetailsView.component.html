@@ -1,0 +1,16 @@
+<div *ngIf="flightDetails" class="flight-details">
+    <h1>Book a flight</h1>
+    <div>
+      <p><strong>Origin:</strong> {{ flightDetails.origin }} Boarding: {{ flightDetails.departure }}</p>
+      <p><strong>Destination:</strong> {{ flightDetails.destination }} Landing: {{ flightDetails.arrival }}</p>
+      <p><strong>No. of passengers:</strong> {{ flightDetails.numberOfPassengers }}</p>
+      <div *ngFor="let passenger of flightDetails.passengerNames; let i = index">
+        <p><strong>Passenger {{ i + 1 }}</strong></p>
+        <p>Name: {{ passenger }}</p>
+        <p>Passport no.: {{ flightDetails.passportNumbers[i] }}</p>
+      </div>
+    </div>
+    <!-- Back Button -->
+    <button (click)="goBack()" class="back-button">Back to My Bookings</button>
+  </div>
+  

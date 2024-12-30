@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { BookingService } from '../../services/booking.service';
-
+import { SharedService } from '../../services/shared.service';
+import { CommonModule } from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-my-bookings',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule],
+  imports: [CommonModule, RouterModule], 
   templateUrl: './MyBookings.component.html',
-  styleUrls: ['./MyBookings.component.css']
+  styleUrls: ['./MyBookings.component.css'],
 })
 export class MyBookingsComponent implements OnInit {
-  bookings: any[] = [];
+  upcomingBookings: any[] = [];
+  previousBookings: any[] = [];
 
-  constructor(private MyBookings: BookingService) {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
-    this.bookings = this.MyBookings.list();
-  }
-
-  viewBooking(bookingCode: string): void {
-    const booking = this.MyBookings.get(bookingCode);
-    console.log('Booking Details:', booking);
+    // Subscribe to booked flights and split into upcoming and previous bookings
+    this.sharedService.selectedFlight$.subscribe((bookings) => {
+      const currentTime = new Date();
+      this.upcomingBookings = bookings.filter(
+        (booking) => new Date(booking.departure) > currentTime
+      );
+      this.previousBookings = bookings.filter(
+        (booking) => new Date(booking.departure) <= currentTime
+      );
+    });
   }
 }
