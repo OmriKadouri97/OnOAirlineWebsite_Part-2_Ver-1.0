@@ -14,7 +14,7 @@ export class MyBookingsComponent implements OnInit {
   upcomingBookings: any[] = [];
   previousBookings: any[] = [];
 
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private routerModule: RouterModule) {}
 
   ngOnInit(): void {
     // Subscribe to booked flights and split into upcoming and previous bookings

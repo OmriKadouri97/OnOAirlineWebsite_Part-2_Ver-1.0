@@ -10,12 +10,6 @@
         <p><strong>Booking Code:</strong> {{ booking.bookingCode }}</p>
         <p><strong>Flight #:</strong> {{ booking.flightNumber }}</p>
         <p><strong>Passengers:</strong> {{ booking.numberOfPassengers }}</p>
-        <div *ngFor="let passenger of booking.passengerNames; let i = index">
-          <p>
-            <strong>Passenger Name:</strong> {{ passenger }}<br />
-            <strong>Passport Number:</strong> {{ booking.passportNumbers[i] }}
-          </p>
-        </div>
         <p><strong>Departure:</strong> {{ booking.departure }}</p>
         <p><strong>Arrival:</strong> {{ booking.arrival }}</p>
         <button mat-raised-button color="primary" [routerLink]="['/FlightDetails', booking.bookingCode]">View</button>
@@ -36,17 +30,11 @@
         <p><strong>Booking Code:</strong> {{ booking.bookingCode }}</p>
         <p><strong>Flight #:</strong> {{ booking.flightNumber }}</p>
         <p><strong>Passengers:</strong> {{ booking.numberOfPassengers }}</p>
-        <div *ngFor="let passenger of booking.passengerNames; let i = index">
-          <p>
-            <strong>Passenger Name:</strong> {{ passenger }} , 
-            <strong>Passport Number:</strong> {{ booking.passportNumbers[i] }}
-          </p>
-        </div>
         <p><strong>Departure:</strong> {{ booking.departure }}</p>
         <p><strong>Arrival:</strong> {{ booking.arrival }}</p>
         <p><strong>Origin:</strong> {{ booking.origin }} 
         <p><strong>Destination:</strong> {{ booking.destination }}</p>
-        <button mat-raised-button color="primary" [routerLink]="['/FlightDetails', booking.bookingCode]">View</button>
+        <button mat-raised-button color="primary" [routerLink]="['/flightDetails', booking.bookingCode]">View</button>
       </div>
     </div>
   </div>
