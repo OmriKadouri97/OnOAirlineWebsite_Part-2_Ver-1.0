@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,4 +18,5 @@ export class HeaderComponent {
   navigateTo(route: string): void {
     this.router.navigate([`/${route}`]);
   }
+
 }

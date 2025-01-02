@@ -17,9 +17,9 @@ export class BookingService {
     {
       bookingCode: 'BK124',
       flightNumber: 'FR456',
-      numberOfPassengers: 1,
-      passengerNames: ['Alice Smith'],
-      passportNumbers: ['C9876543'],
+      numberOfPassengers: 2,
+      passengerNames: ['Charlie Wilson', 'Olivia Thomas'],
+      passportNumbers: ['F1234567', 'G7654321'],
       departure: '03.12.2024, 3:00 PM',
       arrival: '03.12.2024, 4:15 PM',
     },

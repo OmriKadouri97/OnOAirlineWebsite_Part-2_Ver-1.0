@@ -22,10 +22,10 @@ export class SharedService {
   setSelectedFlight(flight: any): void {
     const booking = {
       ...flight,
-      passengerNames: flight.passengerNames || ['No passengers listed'], // Ensure it's always an array
-      passport: flight.passportNumbers || ['No passengers listed'],
+      passengerNames: flight.passengerNames || ['No passengers listed'],
+      passportNumbers: flight.passportNumbers || ['No passport numbers listed'],
     };
-    this.bookedFlights.push(flight); // Add new booking to the array
+    this.bookedFlights.push(booking); // Add new booking to the array
     this.saveBookingsToLocalStorage(); // Save the updated bookings to local storage
     this.selectedFlightSource.next([...this.bookedFlights]); // Notify subscribers with a new copy of the array
   }

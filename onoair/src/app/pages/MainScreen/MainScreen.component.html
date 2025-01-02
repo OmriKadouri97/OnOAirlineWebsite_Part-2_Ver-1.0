@@ -3,7 +3,7 @@
   <h1>Last minute flights</h1>
   <div class="flights-container">
     <mat-card *ngFor="let flight of lastMinuteFlights" class="flight-card" (click)="bookFlight(flight.flightNumber)">
-      <img mat-card-image [src]="flight.imageUrl" alt="{{ flight.destination }} image" class="flight-image" (click)="bookFlight(flight.flightNumber)">
+      <img mat-card-image [src]="flight.imageUrl.trim()" alt="{{ flight.destination }} image" class="flight-image" (click)="bookFlight(flight.flightNumber)">
       <mat-card-content>
         <h3>{{ flight.destination }}</h3>
         <p>{{ flight.date }}</p>
